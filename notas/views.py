@@ -3,6 +3,7 @@ from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from notas.models import Nota
+from notas.forms import NotaForm
 
 # GET
 # Muestre mis notas
@@ -15,7 +16,8 @@ class HomePageView(ListView):
 class CreateNotaView(CreateView):
   # template_name = 'notas/nuevo.html'
   model = Nota
-  fields = ['titulo', 'descripcion']
+  form_class= NotaForm
+  # fields = ['titulo', 'descripcion']
   success_url = reverse_lazy('home')
 
 
@@ -24,7 +26,8 @@ class CreateNotaView(CreateView):
 class UpdateNotaView(UpdateView):
   # template_name = 'notas/actualizar.html'
   model = Nota
-  fields = ['titulo', 'descripcion']
+  form_class= NotaForm
+  # fields = ['titulo', 'descripcion']
   success_url = reverse_lazy('home')
 
 # DELETE
